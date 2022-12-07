@@ -11,7 +11,7 @@ export class App extends React.Component {
     neutral: 0,
     bad: 0
   }
-
+  
   incrementState = (event) => {
     this.setState(prevState => ({[event.target.name]: prevState[event.target.name] + 1}));
   }
@@ -21,6 +21,7 @@ export class App extends React.Component {
   countPositiveFeedbackPercentage = () => (Math.round(this.state.good / (this.countTotalFeedback()) * 100)); 
 
   render() {
+    const { good, neutral, bad } = this.state
     return (
       <div>
         <Section title="Please leave feedback">
@@ -31,9 +32,9 @@ export class App extends React.Component {
         </Section>
         <Section title="Statictics">
           {this.countTotalFeedback() > 0 ? (<Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
+            good={good}
+            neutral={neutral}
+            bad={bad}
             total={this.countTotalFeedback()}
             positivePercentage={this.countPositiveFeedbackPercentage()}
           />) : <Notification message="There is no feedback" />}

@@ -22,11 +22,12 @@ export class App extends React.Component {
 
   render() {
     const { good, neutral, bad } = this.state
+    const optionNames = Object.keys(this.state)
     return (
       <div>
         <Section title="Please leave feedback">
           <FeedbackOptions
-          options={this.state}
+          options={optionNames}
           onLeaveFeedback={this.incrementState}
           />
         </Section>
